@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "php-to-sheets-205000",
+  "private_key_id": "2cfb03ff2c939e5f21cc75d19ae2099527c3904b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/ljIr26DH7zgv\nmLVTpn2LnXBlN7hIkyZXmgZmh5AD4FNwSGHe3UGFkhPesIOUtsoy1WjU5CGX0UpL\nVCVd2qi1P2s7QS3NnJ0A0SAeEvT0poxCQhD+VHbJJrDIeQf2wHD9q57Fgo8ONqp4\nvntfDMha6yQJUdCf8ExT5fDuzAMBuvzjEKp0PVvMqh+A8TJwIj0pHitOWI0zCRha\n+hDKbBPJfazyXYvMz8deA+EqUlW+Xjj4IX5ol3eZwiN0gc9i0RJeEq2kGmM55TK+\nvlQS6iABDtR8DwC7r+OXnvzxZ0P9sgQrVPNDiO3F+rsmeowTYMWUGrclQXXY1RFV\nZoSfT6FZAgMBAAECggEAAcyf0QChjG8nOG83OL9mC3MhlJnG3cuf/w+fwsPAKwEm\n13WekbDDRkVecWd3/OQQlxShBOrVk+7vwzBZn32HuxgK4kYU74rqgJD2O8IS0d9k\njtS/Axx49x+pZmCYng0looRDm/hDbq89v5+OWhCtKwltT7cYfgAMP3d34U5CMvhx\n8aN5cSm/B2Z3O+nVQwirVb+6hfMcEOj0krcpreioOF1GtW5Yy9Ko5vDH2y3D5osk\nGNijmhaYcNrLuKjMc4/UQQoMs0BhDV1Zbde5O2yTEEG/uvOxFaIhaHQP3XgAo7x1\nSOTS1EYpJTPLEbmK2ww4Lj9ywKSpboYe3VAhrUCVhwKBgQDd8IgaXygnR84Qsmx/\n/L1OnucZq8gLmPZggmro3RI4QqKRdzloIww3bXT9S3adnA4sjlTpNkP1hQ3pxGwN\nqQyZi7VRPXWlt3HZDGvBbTEWibaBzL8M/af09BwXHmWcNiHyEyPr5FEB0YDRdSrA\njt5/ZwjWIhEX/my2bj8BOs5WTwKBgQDc/SxnDo7IUX7V4CrI90UrFy+tUtwykYmt\nyvGQta972xTj3oX+k1KLvR2iy6zlIhZig7IxfRwtq2CX6a6P33/r4QDtOXulSOLn\nPPgUJUiJBDZuQpTFpdFt4D+YCLcpCDKv/5tpfStFBO5CEY0cK0MqvSIZijD1lmH0\nZ+JEOIRL1wKBgQDKsNrMIu2b+jMTArCerucBP5RV2JHJLbiNaW5UH1p9cTXhXh5a\noe+NS3TVw66fwJ8dSBv6JSopt4t+XHpGe4ZbUMGWYWfpocDi9joPHDcBm2HH54Lw\nTVSwHKTu5D7uTG3yFFLxI8Jrw7c/FB+oXpKLjkD+t3wfCqikb8kwyVEadwKBgDpW\np6MpJ65gPUCO5hyZkmv2ugJijnjXDOaRXcYbAJGM223wb6UuFSuIqEsyw5jVr90f\n8Sm5Ynf39w8DhK68jNOjWZBGjYqrvCLZaJBA624oa4oeD5JB3RDJk2A6ZMfzPxZR\nPyDRB1w4GgHdCkh2b0vYFClz3srmgUN5LTVfSiWPAoGAOgNTJpXYrPgL+N8tMalv\nCFa9LcemriBQ9QNCqkpbbGYCwb8p1LeYG4OTOhyngmh8fAadx3WbmVu4s0fSWegb\n2THwAsxCAIaePejYRuuMl2K4nW9i6bjB77yqMhUo3pT/haKp2AZmLnWr4F1TqANI\nqOtCp3QffSaeJWVczUFXuKM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "blackpearlinterns@php-to-sheets-205000.iam.gserviceaccount.com",
+  "client_id": "109206163685160310062",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/blackpearlinterns%40php-to-sheets-205000.iam.gserviceaccount.com"
+}
