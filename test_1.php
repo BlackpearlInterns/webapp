@@ -47,6 +47,17 @@ if (isset($rows['values'])) {
             break;
         }
 
+
+        ///////
+        $range = 'A'.$currentRow;
+            $rows = $sheets->spreadsheets_values->get($spreadsheetId, $range);
+            if (isset($rows['values'])) {
+                foreach ($rows['values'] as $row) {
+                    $transdata[] = [
+                        'col-a' => $row[0]];
+                }
+            }
+            ///////
         $data[] = [
             'col-a' => $row[0],
             'col-b' => $row[1],

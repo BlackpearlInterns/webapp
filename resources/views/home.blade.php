@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <?php
+                    echo "Hello, ".Auth::user()->name."!";
+                    ?>
                 </div>
             </div>
         </div>
