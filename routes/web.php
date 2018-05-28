@@ -11,34 +11,36 @@
 |
 */
 
-Route::get('/index', function () {
-    return view('pages.index');
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-/*
-Route::get('/', function () {
-    //return view('welcome');
-    return 'Hello World';
-});
-*/
-
-Route::get('/about', function () {
-    return view('pages.about');
-});
-
-Route::get('/users/{id}', function ($id) {
-    return 'Hello, '.$id;
-});
-
-Route::get('/form', function () {
-    return view('pages.form');
-});
-
-Route::resource('posts', 'PostsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', function () {
+    return view('pages.index');
+});
+
+Route::get('/about', function (){
+    return view('pages.about');
+});
+
+Route::group(['middleware' => ['auth']], function() 
+{
+    Route::post('/form', 'FormsController@confirmData');
+    
+    Route::post('/confirm', 'FormsController@writeData');    
+
+    Route::get('/form', function() {
+        return view('pages.form');
+    });
+
+    Route::get('/success', function () {
+        return redirect('pages.success');
+    });
+
+    Route::get('/', function () {
+        return view('home');
+    });
+
+
+    //Route::resource('form', 'FormsController');
+});
