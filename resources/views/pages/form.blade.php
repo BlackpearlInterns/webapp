@@ -2,17 +2,26 @@
 
 @section('content')
 
-        @if ($transid)
-      
-        @endif
-        <div class="alert alert-success">
-                Transaction successful! Trans ID: <?php echo $transid; ?>
+        @if (Session::get('transID'))
+            <div class="alert alert-success alert-dismissible fade show">
+                Transaction successful! Trans ID: <?php echo Session::get('transID'); ?>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
+            <?php 
+                Session::forget('transID');
+            ?>
+        @endif
         <h1>Form</h1>
         <p>This page will display the form that passes data to a Google Spreadsheet</p>
     
 <?php
         echo Form::open(array('action' => 'FormsController@confirmData'), ['method' => 'POST']);
+            echo '<div class="form-group">';
+                echo Form::label('date', 'Transaction Date');
+                echo Form::date('date', date('Y-m-d'), ['class' => 'form-control']);
+            echo "</div>";
             echo "<div class='form-group'>";
                echo Form::label('payee', 'Payee');
                echo Form::text('payee', '', ['class' => 'form-control', 'placeholder' => "Payee's Full Name"]);
@@ -27,12 +36,9 @@
             echo "</div>";
             echo "<div class='form-group'>";
                echo Form::label('notes', 'Notes');
-               echo Form::text('notes', '', ['class' => 'form-control', 'placeholder' => 'Write something about the transaction']);
+               echo Form::textarea('notes', '', ['class' => 'form-control form-control-sm', 'placeholder' => 'Write something about the transaction']);
             echo "</div>";
-            echo '<div class="form-group">';
-                echo Form::label('date', 'Published On:');
-                echo Form::date('date', date('Y-m-d'), ['class' => 'form-control']);
-            echo "</div>";
+            
                echo Form::submit('Submit', ['class' => 'btn btn-success float-right']);
         echo Form::close();
         ?>

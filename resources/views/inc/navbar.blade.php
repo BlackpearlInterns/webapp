@@ -7,10 +7,10 @@
            <!-- Left Side Of Navbar -->
            <ul class="navbar-nav mr-auto">
               @guest
-                <li><a class="nav-link" href="/webapp/public/about">About</a></li>
+                <li><a class="nav-link" href="{{ URL('/about') }}">About</a></li>
               @else
-                <li><a class="nav-link" href="/webapp/public/home">Home</a></li>
-                <li><a class="nav-link" href="/webapp/public/form">Laravel Form</a></li>
+                <li><a class="nav-link" href="{{ URL('/home') }}">Home</a></li>
+                <li><a class="nav-link" href="{{ URL('/form') }}">Laravel Form</a></li>
               @endguest
            </ul>
 
@@ -20,7 +20,7 @@
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                    <li><a class="nav-link" href="/webapp/public/about">About</a></li>
+                    <li><a class="nav-link" href="/about">About</a></li>
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

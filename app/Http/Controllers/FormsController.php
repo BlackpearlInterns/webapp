@@ -4,6 +4,7 @@ namespace Sprint\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Sprint\Form;
 
 class FormsController extends Controller
@@ -25,21 +26,56 @@ class FormsController extends Controller
         
         $formdata['VAT'] = $formdata['VAT_sales']*0.12;
         $formdata['total'] = $formdata['VAT'] + $formdata['VAT_sales'] + $formdata['NVAT_sales'];
+        
+        Session([
+            'payee' => $formdata['payee'], 
+            'VAT_sales' => $formdata['VAT_sales'], 
+            'VAT' => $formdata['VAT'], 
+            'NVAT_sales' => $formdata['NVAT_sales'], 
+            'notes' => $formdata['notes'], 
+            'date' => $formdata['date'], 
+            'total' => $formdata['total']
+            ]);
 
-        session(['payee' => $formdata['payee'], 'VAT_sales' => $formdata['VAT_sales'], 
-        'VAT' => $formdata['VAT'], 'NVAT_sales' => $formdata['NVAT_sales'], 
-        'notes' => $formdata['notes'], 'date' => $formdata['date'], 
-        'total' => $formdata['total']]);
+        return view('pages.confirm')->with([
+            'payee' => $formdata['payee'], 
+            'VAT_sales' => $formdata['VAT_sales'], 
+            'VAT' => $formdata['VAT'], 
+            'NVAT_sales' => $formdata['NVAT_sales'], 
+            'notes' => $formdata['notes'], 
+            'date' => $formdata['date'], 
+            'total' => $formdata['total']
+            ]);
+    }
 
-        return view('pages.confirm')->with(['payee' => $formdata['payee'], 'VAT_sales' => $formdata['VAT_sales'], 
-            'VAT' => $formdata['VAT'], 'NVAT_sales' => $formdata['NVAT_sales'], 
-            'notes' => $formdata['notes'], 'date' => $formdata['date'], 
-            'total' => $formdata['total']]);
+    public function back()
+    {
+        return redirect('form')->withInput();
     }
 
     public function writeData (Request $confirmation)
     {
         $formdata = Session::all();
+
+        $transID = '';
+
+        function generateRandomString($length) {
+            $characters = '0123456789';
+            $randomString = '';
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, strlen($characters) - 1)];
+            }
+            return $randomString;
+        }
+
+        for($i = 0; $i < 3; $i++){
+            $rand = generateRandomString(4);
+            if($i == 0){
+                $transID = $rand;
+            }
+            else
+                $transID .= "-".$rand;  
+        }
 
         require 'C:\xampp\htdocs\webapp\vendor\autoload.php';
 
@@ -56,16 +92,17 @@ class FormsController extends Controller
 
         $spreadsheetId = '1uKAOjHLfqVnAteA7ln2zCFCxzcecZ1iBK1AdjpRcs4A';
 
-        $range = 'B2:G';
+        $range = 'A2:G';
         $rows = $sheets->spreadsheets_values->get($spreadsheetId, $range, ['majorDimension' => 'ROWS']);
         if (isset($rows['values'])) {
             foreach ($rows['values'] as $row) {
                 if (!empty($row[0])) { $currentRow++; }
             }
         }
-            $updateRange = 'B'.$currentRow.":H";
+            $updateRange = 'A'.$currentRow.":H";
             $values = [
                 [
+                    $transID,
                     Session::get('payee'),
                     Session::get('VAT_sales'),
                     Session::get('NVAT_sales'),
@@ -77,21 +114,15 @@ class FormsController extends Controller
             ];
             $body = new \Google_Service_Sheets_ValueRange([
                 'values' => $values
-              ]);
+            ]);
             $params = [
                 'valueInputOption' => 'USER_ENTERED'
             ];
             $result = $sheets->spreadsheets_values->update($spreadsheetId, $updateRange,
                 $body, $params);
-                $transdata = '';
-                $readRange = 'A'.$currentRow.':G';
-                $rows = $sheets->spreadsheets_values->get($spreadsheetId, $readRange, ['majorDimension' => 'ROWS']);
-                if (isset($rows['values'])) {
-                    foreach ($rows['values'] as $row) {
-                        print_r($rows['values']);
-                    }
-                }
-                return view('pages.form', ['transid' => $transdata]);
+                
+            Session(['transID' => $transID]);
+            return redirect('form');
 
     }
 

@@ -33,14 +33,13 @@ Route::group(['middleware' => ['auth']], function()
         return view('pages.form');
     });
 
-    Route::get('/success', function () {
-        return redirect('pages.success');
+    Route::get('/confirm', function() {
+        return view('pages.confirm');
     });
+
+    Route::get('/confirm', 'FormsController@back');
 
     Route::get('/', function () {
         return view('home');
     });
-
-
-    //Route::resource('form', 'FormsController');
 });

@@ -10,6 +10,9 @@
         <table class="table table-bordered">
             <thead>
               <tr>
+                <td scope="row" colspan="2" class="text-center"><b>Input</b></td>
+              </tr>
+              <tr>
                 <th scope="row">Date of Transaction</th>
                 <td>{{$date}}</td>
               </tr>
@@ -47,7 +50,7 @@
         {{ Form::open(array('action' => 'FormsController@writeData'), ['method' => 'POST']) }}
             {{ Form::submit('Confirm', ['class' => 'btn btn-success float-right']) }}
         {{ Form::close() }}
-        <a href="/webapp/public/form" class="btn btn-danger float-left">Go Back and Edit</a>
+        <a href="{{ action('FormsController@back') }}" class="btn btn-danger float-left">Go Back and Edit</a>
 
        
         
